@@ -1,0 +1,81 @@
+package dn;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Random;
+import java.io.FileReader;
+public class CreateFiles {
+	
+	CreateFiles of = new CreateFiles();
+	private BufferedReader br;
+	private BufferedWriter bw;
+	
+	public static void main(String[]args)
+	{
+		new CreateFiles();
+	}
+	
+	public CreateFiles()
+	{
+		//Secuencias.umd
+		//EnteroAleatorio, EnteroAleatorio(Mayor), CadenaCaracteresAleatoria(ACGT)1000 lineas
+		
+		int start , length;
+		String sequence;
+		Random rd = new Random();
+		
+		try
+		{
+			bw = new BufferedWriter( new FileWriter( "Secuencias.umd" ));
+			
+			for (int i = 0; i <= 1000; i++)
+			{
+				start  = Math.abs(rd.nextInt());
+				length = 5 +  rd.nextInt(25);
+				
+				sequence = "";
+				
+				for (int j = 0; j < length; j++)
+				{
+					switch(rd.nextInt(4))
+					{
+						case 0:	sequence += "A";	break;
+						case 1:	sequence += "C";	break;
+						case 2:	sequence += "G";	break;
+						case 3:	sequence += "T";	break;
+					}	
+				}
+				
+				bw.write(start + "," + (start + length) + "," + sequence + "\n");
+			}
+			bw.flush();
+			
+		}catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	//Si la secuencia contiene al motf(Patron)
+	
+	public int countReads(String motif) throws IOException
+	{
+		
+		br = new BufferedReader(new FileReader("Secuencia.umd") ); 
+		String read;
+		int lines = 0;
+		read = br.readLine(); //Primera Linea
+		
+		while(read != null)
+		{
+			if (read.split(",")[2].contains(motif))
+			{
+				lines += 1;
+			}
+		}
+		return lines;
+		
+	}
+}
