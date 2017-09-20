@@ -5,13 +5,14 @@ import java.io.OutputStreamWriter;
 public class riemann {
 	public static void main (String[]args) throws NumberFormatException, IOException
 	{
-		
+		//se imprimen unos valores determinados de la suma de rieman, probando diferentes incrementos
 		BufferedWriter bw = new BufferedWriter (new OutputStreamWriter (System.out));
 		bw.write("suma de riemann: "+suma_riemann(0, 10, 1));
 		bw.write("suma de riemann: "+suma_riemann(0, 10, 2));
 		bw.write("suma de riemann: "+suma_riemann(0, 10, 0.05));
 		bw.flush();
 	}
+	//se crea la funcion la cual pide 3 valores de entrada
 	public static double suma_riemann (int initial_point,int final_point, double step_increment) 
 	{
 		double response = 0.0;
@@ -23,6 +24,7 @@ public class riemann {
 		x_i = step_increment + x_i_1;
 		for(double i = x_i; i <= final_point; i+= step_increment)
 		{
+			//se hace un cast de una variable tipo double a integer
 			y_i = (int) (Math.pow(x_i, 2));
 			temp = (y_i)*(x_i-x_i_1);
 			response += temp;
@@ -34,3 +36,4 @@ public class riemann {
 		return response;
 	}	
 }
+
