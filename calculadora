@@ -8,13 +8,13 @@ import java.io.OutputStreamWriter;
 import java.text.DecimalFormat;
 
 public class Calculadora {
+	//se importan dos buffer para lectura e impresion de datos
     static BufferedReader br = new BufferedReader (new InputStreamReader ( System.in ) );
     static BufferedWriter bw = new BufferedWriter (new OutputStreamWriter ( System.out ) );
   
-    
-	
 	public static void main(String[] args) throws IOException{
 		int option;
+		//se crea un menu que se repita al finalizar una operacion
 		do
 		{	 
 			option=option();
@@ -26,6 +26,7 @@ public class Calculadora {
 	}
 	public static int option() throws IOException
 	{
+		//se le dan a elegir unas opciones al usuario
 		bw.write("\n\nSeleccione alguna de las siguientes opciones: \n1. Suma \n2. Resta \n3. Multiplicacion \n4. Division \n5. Modulo \n6. Factorial \n7. Exponente \n8. Seno \n9. Coseno \n10. Integral \n11. Salir \n");
 		bw.flush();
 		int option = Integer.parseInt(br.readLine());
@@ -33,7 +34,10 @@ public class Calculadora {
 	}
 	public static int[] getParameters(int option) throws IOException
 	{
+		//segun la opcion elegida se le pide una cantidad de parametros
 		int[] parameters=null;
+		// se utiliza un switch case para poder configurar cada opcion
+		// la opcion 11 termina la ejecucion
 		switch (option)
 		{
 		case 1:
@@ -165,6 +169,8 @@ public class Calculadora {
 	}
 	public static void operation(int option, int[]parameters) throws IOException
 	{
+		//se le asigna la operacion a cada una de las opciones
+		// se calculan los resultados por medio de los parametros anteriormente solicitados
 		Operaciones operation =new Operaciones();
 		
 		switch (option)
