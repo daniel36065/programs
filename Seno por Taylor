@@ -3,6 +3,7 @@ package dn;
 public class SenoTaylor {
 	public static void main(String[]args)
 	{
+		// se imprime el seno de 90 grados
 		System.out.println(sin(90));
 	}
 	public static double sin(int x)
