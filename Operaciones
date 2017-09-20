@@ -2,7 +2,7 @@ package dn;
 
 
 public class Operaciones {
-	
+	//se realizan las operaciones de la clase Calculadora
 	public void operaciones(){}
 	/**
 	 * 
@@ -12,9 +12,7 @@ public class Operaciones {
 	 */
 	public int addition(int number1, int number2) 
 	{
-		
-		return number1+number2;
-				
+		return number1+number2;		
 	}
 	/**
 	 * 
@@ -68,6 +66,7 @@ public class Operaciones {
 		
 	public int factorial(int number) 
 	{
+		//se halla el factorial de un numero usando la recursividad
 		if(number<1)
 			return 1;
 		else
@@ -80,6 +79,7 @@ public class Operaciones {
 	 * @return
 	 */
 	public int exponentiation(int base, int exponent) 
+	// se halla el exponente sin utilizar la libreria Math
 	{
 		if(exponent==1)
 			return base;
@@ -99,17 +99,41 @@ public class Operaciones {
 	 */
 	public double sin(int x)
 	{
-		double b = Math.toRadians(x);
-		return Math.sin(b);
+		//se halla seno por medio de la serie de taylor
+		double dividendo,divisor,seno = 0;
+    	for(int i=0; i<=10;i++) 
+    	{
+    		dividendo=exponentiation(x,2*i+1);
+    		divisor=factorial(2*i+1);
+    		seno=seno+dividendo/divisor*signo(i);
+    	}	
+    	return seno;
             
         }
+	private double signo(int i) {
+		//se resume como el los valores de -1^n
+		 if(i%2==0)
+	     {
+			 return 1;
+	     }else{
+	    	 return -1;
+	     }
+	}
 	public double cos(int x)
 	{
-		double b = Math.toRadians(x);
-		return Math.cos(b);	
+		//se halla coseno por medio de la serie de taylor
+		double dividendo,divisor,coseno = 0;
+    	for(int i=0; i<=10;i++) 
+    	{
+    		dividendo=exponentiation(x,2*i);
+    		divisor=factorial(2*i);
+    		coseno=coseno+dividendo/divisor*signo(i);
+    	}	
+    	return coseno;	
 	}
 	public double integral (int initial_point,int final_point, double step_increment) 
 	{
+		//se halla la inteegral por medio de la serie de riemann
 		double response = 0.0;
 		double  temp;
 		double x_i;
