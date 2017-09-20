@@ -1,0 +1,19 @@
+package dn;
+
+public class Potencia {
+	public int exponentiation(int base, int exponent) 
+	// se halla el exponente sin utilizar la libreria Math
+	//se utiliza recursividad
+	{
+		if(exponent==1)
+			return base;
+		else
+			if(exponent==0)
+				return 1;
+			else
+				if(exponent>1)
+					return (base* exponentiation(base,exponent-1));
+				else
+					return (1/exponentiation(base, (exponent*(-1))));
+	}
+}
