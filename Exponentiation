@@ -1,7 +1,12 @@
 package dn;
 
 public class Potencia {
-	public int exponentiation(int base, int exponent) 
+	public static void main(String[]args)
+	{
+		// se imprime 2^4
+		System.out.println(exponentiation(2,4));
+	}
+	public static int exponentiation(int base, int exponent) 
 	// se halla el exponente sin utilizar la libreria Math
 	//se utiliza recursividad
 	{
