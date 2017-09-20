@@ -1,0 +1,38 @@
+package dn;
+
+public class SenoTaylor {
+	public static void main(String[]args)
+	{
+		System.out.println(sin(90));
+	}
+	public static double sin(int x)
+	{
+		//se halla seno por medio de la serie de taylor
+		double dividendo,divisor,seno = 0;
+    	for(int i=0; i<=10;i++) 
+    	{
+    		dividendo=Math.pow(x,2*i+1);
+    		divisor=factorial(2*i+1);
+    		seno=seno+dividendo/divisor*signo(i);
+    	}	
+    	return seno;
+            
+    }
+	public static int factorial(int number) 
+	{
+		//se halla el factorial de un numero usando la recursividad
+		if(number<1)
+			return 1;
+		else
+			return number*factorial(number-1);
+	}
+	private static double signo(int i) {
+		//se resume como el los valores de -1^n
+		 if(i%2==0)
+	     {
+			 return 1;
+	     }else{
+	    	 return -1;
+	     }
+	}
+}
